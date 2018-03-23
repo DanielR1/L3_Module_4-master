@@ -19,22 +19,120 @@ public class BruteForceCracker {
 	
 	public static void main(String[] args) {
 		System.out.println("Starting Brute Force Checker");
+		
+		Thread t1 = new Thread(()->{
+			for (int i = 0; i < 100000000; i++) {
+				if(checkCode(i)==true) {
+					endTime = System.currentTimeMillis();
+				}
+			}
+		});
+		Thread t2 = new Thread(()->{
+			for (int i = 100000000; i < 200000000; i++) {
+				if(checkCode(i)==true) {
+					endTime = System.currentTimeMillis();
+				}
+			}
+		});
+		Thread t3 = new Thread(()->{
+			for (int i = 200000000; i < 300000000; i++) {
+				if(checkCode(i)==true) {
+					endTime = System.currentTimeMillis();
+				}
+			}
+		});
+		Thread t4 = new Thread(()->{
+			for (int i = 300000000; i < 400000000; i++) {
+				if(checkCode(i)==true) {
+					endTime = System.currentTimeMillis();
+				}
+			}
+		});
+		Thread t5 = new Thread(()->{
+			for (int i = 400000000; i < 500000000; i++) {
+				if(checkCode(i)==true) {
+					endTime = System.currentTimeMillis();
+				}
+			}
+		});
+		Thread t6 = new Thread(()->{
+			for (int i = 500000000; i < 600000000; i++) {
+				if(checkCode(i)==true) {
+					endTime = System.currentTimeMillis();
+				}
+			}
+		});
+		Thread t7 = new Thread(()->{
+			for (int i = 600000000; i < 700000000; i++) {
+				if(checkCode(i)==true) {
+					endTime = System.currentTimeMillis();
+				}
+			}
+		});
+		Thread t8 = new Thread(()->{
+			for (int i = 700000000; i < 800000000; i++) {
+				if(checkCode(i)==true) {
+					endTime = System.currentTimeMillis();
+				}
+			}
+		});
+		Thread t9 = new Thread(()->{
+			for (int i = 800000000; i < 900000000; i++) {
+				if(checkCode(i)==true) {
+					endTime = System.currentTimeMillis();
+				}
+			}
+		});
+		Thread t10 = new Thread(()->{
+			for (int i = 900000000; i < 1000000000; i++) {
+				if(checkCode(i)==true) {
+					endTime = System.currentTimeMillis();
+				}
+			}
+		});
+		
 		startTime = System.currentTimeMillis();
+		t1.start();
+		t2.start();
+		t3.start();
+		t4.start();
+		t5.start();
+		t6.start();
+		t7.start();
+		t8.start();
+		t9.start();
+		t10.start();
+		try {
+			t1.join();
+			t2.join();
+			t3.join();
+			t4.join();
+			t5.join();
+			t6.join();
+			t7.join();
+			t8.join();
+			t9.join();
+			t10.join();
+			
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		
-		int ctr = 0;
-		while(!checkCode(ctr++));
 		
-		endTime = System.currentTimeMillis();
+	
 		elapsedTime = (float)(endTime - startTime);
 		elapsedTime /= 1000.f;
 		System.out.println("Total time taken: " + elapsedTime + " seconds");
 	}
 	
 	public static boolean checkCode(long p){
+		
 		if(p == code){
 			return true;
 		}else{
 			return false;
+			
 		}
 	}
 }
